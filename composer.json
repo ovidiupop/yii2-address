@@ -1,0 +1,22 @@
+{
+    "name": "ovidiupop/yii2-address",
+    "description": "The address module is a Yii2 extension designed to simplify the management and integration of address-related functionalities within your Yii2 applications. It provides a seamless way to handle addresses as a standalone entity, allowing you to associate them with various models, such as customers, companies, or any other entities in your application.",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","address", "php"],
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Ovidiu Pop",
+            "email": "ovidiupop70@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "2.*",
+        "ovidiupop/yii2-nordicgeo": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "ovidiupop\\address\\": "src/"
+        }
+    }
+}
