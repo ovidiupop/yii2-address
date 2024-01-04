@@ -1,5 +1,13 @@
 
-**Instalare**
+**Description**
+
+The address module is a Yii2 extension designed to simplify the management and integration of address-related  
+functionalities within your Yii2 applications. It provides a seamless way to handle addresses as a standalone entity,  
+allowing you to associate them with various models, such as customers, companies, or any other entities in your  
+application.
+
+**Installation**
+
 
 The preferred method for installation is using Composer.
 
