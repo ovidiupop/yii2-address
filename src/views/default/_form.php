@@ -78,9 +78,6 @@ use yii\widgets\ActiveForm;
         <div class="col-3">
             <?= $form->field($model, 'apartment_number')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-3">
-            <?= $form->field($model, 'address_type')->textInput(['maxlength' => true]) ?>
-        </div>
     </div>
     <div class="row">
         <div class="col-12">

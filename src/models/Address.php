@@ -22,7 +22,6 @@ use yii\db\ActiveRecord;
  * @property string $state
  * @property string $postal_code
  * @property string $country
- * @property string $address_type
  * @property string $additional_info
  */
 class Address extends ActiveRecord
@@ -45,7 +44,7 @@ class Address extends ActiveRecord
     {
         return [
             [['country', 'region','city', 'postal_code', 'street'], 'required'],
-            [['address_type', 'additional_info'], 'safe'],
+            [['additional_info'], 'safe'],
             [['house_number', 'apartment_number'], 'string'],
         ];
     }
@@ -64,16 +63,8 @@ class Address extends ActiveRecord
             'street' => Yii::t('app', 'Street'),
             'house_number' => Yii::t('app', 'House Number'),
             'apartment_number' => Yii::t('app', 'Block/Apartment Number'),
-            'address_type' => Yii::t('app', 'Address Type'),
             'additional_info' => Yii::t('app', 'Address Additional Information'),
         ];
-    }
-
-    public function getAddressTypeLabel()
-    {
-        return $this->address_type == self::TYPE_PERSON
-            ? Yii::t('app', 'Person')
-            : Yii::t('app', 'Company');
     }
 }
 

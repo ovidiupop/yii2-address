@@ -43,12 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'region',
             'postal_code',
             'country',
-            [
-                'attribute' => 'address_type',
-                'value' => function ($model) {
-                    return $model->getAddressTypeLabel();
-                },
-            ],
             'additional_info',
         ],
     ]) ?>

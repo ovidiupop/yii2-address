@@ -23,7 +23,6 @@ class m240103_165225_create_address_table extends Migration
             'street' => $this->string(),
             'house_number' => $this->string(),
             'apartment_number' => $this->string(),
-            'address_type' => $this->string(),
             'additional_info' => $this->string(),
         ]);
     }

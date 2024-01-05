@@ -36,8 +36,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'country') ?>
 
-    <?= $form->field($model, 'address_type') ?>
-
     <?= $form->field($model, 'additional_info') ?>
 
     <div class="form-group">

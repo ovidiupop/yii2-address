@@ -38,7 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'region',
             'postal_code',
             'country',
-            'address_type',
             'additional_info',
 
             ['class' => 'yii\grid\ActionColumn'],

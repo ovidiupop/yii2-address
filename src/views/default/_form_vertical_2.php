@@ -56,7 +56,6 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'street')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'house_number')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'apartment_number')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'address_type')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
     <div class="row">

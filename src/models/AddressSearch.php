@@ -21,7 +21,7 @@ class AddressSearch extends Address
     {
         return [
             [['id'], 'integer'],
-            [['street', 'house_number', 'apartment_number', 'city', 'region', 'postal_code', 'country', 'address_type', 'additional_info'], 'safe'],
+            [['street', 'house_number', 'apartment_number', 'city', 'region', 'postal_code', 'country', 'additional_info'], 'safe'],
         ];
     }
 
@@ -71,7 +71,6 @@ class AddressSearch extends Address
             ->andFilterWhere(['like', 'region', $this->region])
             ->andFilterWhere(['like', 'postal_code', $this->postal_code])
             ->andFilterWhere(['like', 'country', $this->country])
-            ->andFilterWhere(['like', 'address_type', $this->address_type])
             ->andFilterWhere(['like', 'additional_info', $this->additional_info]);
 
         return $dataProvider;
