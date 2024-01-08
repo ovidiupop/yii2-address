@@ -42,11 +42,7 @@ class Address extends ActiveRecord
      */
     public function rules()
     {
-        return [
-            [['country', 'region','city', 'postal_code', 'street'], 'required'],
-            [['additional_info'], 'safe'],
-            [['house_number', 'apartment_number'], 'string'],
-        ];
+        return Yii::$app->getModule('address')->rules;
     }
 
     /**

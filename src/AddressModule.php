@@ -7,6 +7,7 @@
 
 namespace ovidiupop\address;
 
+use ovidiupop\address\models\Address;
 use Yii;
 
 /**
@@ -19,6 +20,18 @@ class AddressModule extends \yii\base\Module
     public $formHorizontal = '@ovidiupop/address/views/default/_form_horizontal';
     public $formCustom = '@ovidiupop/address/views/default/_form_horizontal';
 
+    public $rules  = [
+        [['country', 'region','city', 'postal_code', 'street'], 'required'],
+        [['additional_info'], 'safe'],
+        [['house_number', 'apartment_number'], 'string'],
+    ];
+
+
+    public function getNoRegionCountries()
+    {
+        return Yii::$app->nordicgeo->callApi('CountriesWithoutRegion', ['region'=>"null"]);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -29,8 +42,25 @@ class AddressModule extends \yii\base\Module
      */
     public function init()
     {
+        $noRegionCountries = $this->getNoRegionCountries();
+        if ($noRegionCountries) {
+            $rules = [
+                [['country', 'city', 'postal_code', 'street'], 'required'],
+                [['additional_info'], 'safe'],
+                [['house_number', 'apartment_number'], 'string'],
+
+                ['region', 'required', 'when' => function ($model) use ($noRegionCountries) {
+                    return !in_array($model->country, $noRegionCountries);
+                }, 'whenClient' => "function (attribute, value) {
+                    var noRegionCountries = " . json_encode($noRegionCountries) . ";
+                    return !(noRegionCountries.includes($('.geography-select.country').val()));
+                }"],
+            ];
+            $this->rules = $rules;
+        }
+
         parent::init();
-       \Yii::configure($this, require __DIR__ . '/config/main.php');
+        \Yii::configure($this, require __DIR__ . '/config/main.php');
 
     }
 }
