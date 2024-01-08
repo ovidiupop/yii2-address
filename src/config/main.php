@@ -7,15 +7,13 @@
 
 return [
     'components' => [
+        'nordicgeo' => [
+            'class' => 'ovidiupop\nordicgeo\NordicGeo',
+            'apisBaseUrl' => 'http://geo.local/',
+            'queryBaseUrl' => 'http://geo.local/api/query?type=',
+        ],
         'addressComponent' => [
             'class' => 'ovidiupop\address\components\AddressComponent',
-        ],
-
-        'urlManager' => [
-            'class' => 'yii\web\UrlManager',
-            'rules' => [
-                'address/<action:[\w-]+>' => 'address/default/<action>',
-            ],
         ],
     ],
 ];

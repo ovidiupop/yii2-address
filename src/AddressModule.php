@@ -22,15 +22,11 @@ class AddressModule extends \yii\base\Module
 
     public $rules  = [
         [['country', 'region','city', 'postal_code', 'street'], 'required'],
-        [['additional_info'], 'safe'],
-        [['house_number', 'apartment_number'], 'string'],
+        [['house_number', 'apartment_number', 'additional_info'], 'string'],
     ];
 
-
-    public function getNoRegionCountries()
-    {
-        return Yii::$app->nordicgeo->callApi('CountriesWithoutRegion', ['region'=>"null"]);
-    }
+    public $apisBaseUrl = 'http://geo.local/';
+    public $queryBaseUrl = 'http://geo.local/api/query?type=';
 
     /**
      * {@inheritdoc}
@@ -42,7 +38,11 @@ class AddressModule extends \yii\base\Module
      */
     public function init()
     {
-        $noRegionCountries = $this->getNoRegionCountries();
+        $config = require __DIR__ . '/config/main.php';
+        \Yii::$app->setComponents($config['components']);
+
+        //get countries without region
+        $noRegionCountries = Yii::$app->nordicgeo->callApi('CountriesWithoutRegion', ['region'=>"null"]);
         if ($noRegionCountries) {
             $rules = [
                 [['country', 'city', 'postal_code', 'street'], 'required'],
@@ -58,9 +58,5 @@ class AddressModule extends \yii\base\Module
             ];
             $this->rules = $rules;
         }
-
-        parent::init();
-        \Yii::configure($this, require __DIR__ . '/config/main.php');
-
     }
 }
