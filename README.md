@@ -22,12 +22,22 @@ Or, add the following line to your composer.json file::
 1. Run the migration in the migrations folder to create the 'address' table.
    The model that includes the address will need a field "address_id" that relates to the "address" table.   
  
-2. In the config/main.php file, add:
+   2. In the config/main.php file, add:
 
-       'modules' => [
-           'address' => [
-             'class' => 'ovidiupop\address\Address',
-           ],
+           'modules' => [
+               'address' => [
+                'class' => 'ovidiupop\address\Address',
+               ], 
+           ........
+           'components' => [
+               'nordicgeo' => [
+                 'class' => 'ovidiupop\nordicgeo\NordicGeo',
+               ],
+            ............
+          'controllerMap' => [
+            'nordicgeo'=> 'ovidiupop\nordicgeo\controllers\NordicGeoController',
+           
+
 
 **Usage**
 

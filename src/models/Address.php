@@ -19,7 +19,7 @@ use yii\db\ActiveRecord;
  * @property string $house_number
  * @property string $apartment_number
  * @property string $city
- * @property string $state
+ * @property string $region
  * @property string $postal_code
  * @property string $country
  * @property string $additional_info

@@ -24,10 +24,6 @@ class AddressModule extends \yii\base\Module
         [['country', 'region','city', 'postal_code', 'street'], 'required'],
         [['house_number', 'apartment_number', 'additional_info'], 'string'],
     ];
-
-    public $apisBaseUrl = 'http://geo.local/';
-    public $queryBaseUrl = 'http://geo.local/api/query?type=';
-
     /**
      * {@inheritdoc}
      */
