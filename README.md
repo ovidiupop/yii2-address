@@ -11,7 +11,7 @@ application.
 
 The preferred method for installation is using Composer.
 
-    composer require --prefer-dist ovidiupop/yii2-address "@dev"
+    composer require ovidiupop/yii2-address "@dev"
 
 Or, add the following line to your composer.json file::
 
@@ -22,22 +22,17 @@ Or, add the following line to your composer.json file::
 1. Run the migration in the migrations folder to create the 'address' table.
    The model that includes the address will need a field "address_id" that relates to the "address" table.   
  
-   2. In the config/main.php file, add:
-
-           'modules' => [
-               'address' => [
-                'class' => 'ovidiupop\address\Address',
-               ], 
-           ........
-           'components' => [
-               'nordicgeo' => [
-                 'class' => 'ovidiupop\nordicgeo\NordicGeo',
-               ],
-            ............
-          'controllerMap' => [
-            'nordicgeo'=> 'ovidiupop\nordicgeo\controllers\NordicGeoController',
-           
-
+2. In the config/main.php file, add:
+````
+'modules' => [
+    'address' => [
+     'class' => 'ovidiupop\address\Address',
+    ], 
+........
+'controllerMap' => [
+     'address'=> 'ovidiupop\address\controllers\AddressController',
+ ..............
+````
 
 **Usage**
 
@@ -118,5 +113,5 @@ In this case, the address form will be displayed in the form with:
 
 **i18n**
 
-For message translation, the 'app' convention [Yii::t('app', message)] has been used as the "category."
+For message translation, the 'address' convention [Yii::t('address', message)] has been used as the "category."
 

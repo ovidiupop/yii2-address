@@ -16,32 +16,32 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-12">
-            <?php if (class_exists(\ovidiupop\nordicgeo\controllers\NordicGeoController::class)): ?>
+            <?php if (Yii::$app->getModule('address')->useCascade): ?>
                 <?php echo $form->field($model, 'country')->widget(\kartik\widgets\Select2::class, [
-                    'data' => \ovidiupop\nordicgeo\controllers\NordicGeoController::cmb('Countries', []),
+                    'data' => $model->cmb('Countries', []),
                     'options' => [
-                        'prompt' => Yii::t('app', 'Select country'),
+                        'prompt' => Yii::t('address', 'Select country'),
                         'class' => 'geography-select country'
                     ],
                 ]); ?>
                 <?php echo $form->field($model, 'region')->widget(\kartik\widgets\Select2::class, [
-                    'data' => \ovidiupop\nordicgeo\controllers\NordicGeoController::cmb('RegionsByCountry', ['country' => $model->country]),
+                    'data' =>  $model->cmb('RegionsByCountry', ['country' => $model->country]),
                     'options' => [
-                        'prompt' => Yii::t('app', 'Select region'),
+                        'prompt' => Yii::t('address', 'Select region'),
                         'class' => 'geography-select region'
                     ],
                 ]); ?>
                 <?php echo $form->field($model, 'city')->widget(\kartik\widgets\Select2::class, [
-                    'data' => \ovidiupop\nordicgeo\controllers\NordicGeoController::cmb('PlacesByRegion', ['country' => $model->country, 'region' => $model->region]),
+                    'data' =>  $model->cmb('PlacesByRegion', ['country' => $model->country, 'region' => $model->region]),
                     'options' => [
-                        'prompt' => Yii::t('app', 'Select city'),
+                        'prompt' => Yii::t('address', 'Select city'),
                         'class' => 'geography-select place'
                     ],
                 ]); ?>
                 <?php echo $form->field($model, 'postal_code')->widget(\kartik\widgets\Select2::class, [
-                    'data' => \ovidiupop\nordicgeo\controllers\NordicGeoController::cmb('PostalCode', ['country' => $model->country, 'region' => $model->region, 'place' => $model->city]),
+                    'data' =>  $model->cmb('PostalCode', ['country' => $model->country, 'region' => $model->region, 'place' => $model->city]),
                     'options' => [
-                        'prompt' => Yii::t('app', 'Select postal code'),
+                        'prompt' => Yii::t('address', 'Select postal code'),
                         'class' => 'geography-select postalcode'
                     ],
                 ]); ?>

@@ -4,6 +4,7 @@
  * Date: 1/3/24
  * Filename: AddressSearch.php
  */
+
 namespace ovidiupop\address\models;
 
 use yii\base\Model;

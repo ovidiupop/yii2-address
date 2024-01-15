@@ -9,10 +9,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model ovidiupop\address\models\Address */
 
-$this->title = Yii::t('app', 'Update Address: {id}', ['id' => $model->id]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Addresses'), 'url' => ['index']];
+$this->title = Yii::t('address', 'Update Address: {id}', ['id' => $model->id]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('address', 'Addresses'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('address', 'Update');
 ?>
 <div class="address-update">
 

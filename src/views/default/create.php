@@ -11,8 +11,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model ovidiupop\address\models\Address */
 
-$this->title = Yii::t('app', 'Create Address');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Addresses'), 'url' => ['index']];
+$this->title = Yii::t('address', 'Create Address');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('address', 'Addresses'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="address-create">
