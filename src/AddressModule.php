@@ -154,7 +154,7 @@ class AddressModule extends \yii\base\Module
         $result = $this->makeApiCall($url);
 
         if ($combine) {
-            if ($type == 'CountriesWithName') {
+            if ($type === 'CountriesWithName') {
                 $countries = [];
                 foreach ($result as $country) {
                     $countries[$country['country_code']] = $country['country_name'];
@@ -210,7 +210,7 @@ class AddressModule extends \yii\base\Module
     private function makeApiCall($url)
     {
         $response = file_get_contents($url);
-        return json_decode($response, true) ?: [];
+        return Json::decode($response, true) ?: [];
     }
 
     /**
@@ -230,7 +230,7 @@ class AddressModule extends \yii\base\Module
                 ['region', 'required', 'when' => function ($model) use ($noRegionCountries) {
                     return !in_array($model->country, $noRegionCountries);
                 }, 'whenClient' => "function (attribute, value) {
-                    var noRegionCountries = " . json_encode($noRegionCountries) . ";
+                    var noRegionCountries = " . Json::encode($noRegionCountries) . ";
                     return !(noRegionCountries.includes($('.geography-select.country').val()));
                 }"],
             ];
